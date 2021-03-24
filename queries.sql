@@ -8,4 +8,4 @@ SELECT * FROM employer WHERE location="stlouis"
 DROP TABLE job;
 
 ## Part 4: Test it with SQL
-SELECT s.name, s.description, j.id FROM techjobs.skill s LEFT JOIN techjobs.job j ON s.name = j.name WHERE j.id IS NOT NULL;
+SELECT s.name, s.description, s.id FROM techjobs.skill s right JOIN techjobs.job_skills j ON s.id = j.skills_id WHERE j.jobs_id IS NOT NULL;
