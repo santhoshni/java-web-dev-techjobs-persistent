@@ -56,15 +56,22 @@ public class HomeController {
                                        Errors errors, Model model, @RequestParam int employerId, @RequestParam List<Integer> skills, @RequestParam String name) {
         System.out.println("======processAddJobForm==HC======"+employerId);
 
+
+
         if (errors.hasErrors()) {
+            System.out.println("emp ======1111====> ");
             model.addAttribute("title", "Add Job");
+            model.addAttribute("employers",employerRepository.findAll());
+            model.addAttribute("skills",skillRepository.findAll());
+
             return "add";
         }
         else{
+
             Optional<Employer> optEmployer=employerRepository.findById(employerId);
 
             Employer emp = optEmployer.get();
-            System.out.println("emp ==========> "+emp);
+            System.out.println("emp ======222====> "+emp);
             //model.addAttribute("employer", newJob.setEmployer(emp));
             newJob.setEmployer(emp);
             List<Skill> skillsValue = (List<Skill>) skillRepository.findAllById(skills);
